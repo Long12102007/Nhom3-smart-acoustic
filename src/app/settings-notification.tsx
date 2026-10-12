@@ -1,29 +1,69 @@
 import { Ionicons } from '@expo/vector-icons';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { Stack, router } from 'expo-router';
-import { useState } from 'react';
-import { SafeAreaView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+import { useEffect, useState } from 'react';
+import { Alert, SafeAreaView, StyleSheet, Switch, Text, TouchableOpacity, View } from 'react-native';
+
+const NOTIF_ENABLED_KEY = '@notif_enabled';
+const NOTIF_POPUP_KEY = '@notif_popup';
 
 export default function SettingsNotificationScreen() {
   const [isEnabled, setIsEnabled] = useState(true);
-  const [isVibrate, setIsVibrate] = useState(true);
   const [isPopup, setIsPopup] = useState(true);
+
+  // Tải trạng thái đã lưu khi mở màn hình
+  useEffect(() => {
+    const loadSettings = async () => {
+      try {
+        const savedEnabled = await AsyncStorage.getItem(NOTIF_ENABLED_KEY);
+        const savedPopup = await AsyncStorage.getItem(NOTIF_POPUP_KEY);
+
+        if (savedEnabled !== null) setIsEnabled(savedEnabled === 'true');
+        if (savedPopup !== null) setIsPopup(savedPopup === 'true');
+      } catch (e) {
+        console.log("Lỗi tải cài đặt thông báo:", e);
+      }
+    };
+    loadSettings();
+  }, []);
+
+  // Xử lý thay đổi "Bật thông báo"
+  const handleToggleEnabled = async (value: boolean) => {
+    setIsEnabled(value);
+    await AsyncStorage.setItem(NOTIF_ENABLED_KEY, value.toString());
+  };
+
+  // Xử lý thay đổi "Thông báo Popup"
+  const handleTogglePopup = async (value: boolean) => {
+    setIsPopup(value);
+    await AsyncStorage.setItem(NOTIF_POPUP_KEY, value.toString());
+    
+    if (value) {
+      // Hiển thị Popup mẫu ngay lập tức để kiểm tra
+      Alert.alert(
+        "👶 Cảnh báo từ hệ thống",
+        "Tính năng thông báo Popup đã được kích hoạt thành công!",
+        [{ text: "Đã hiểu" }]
+      );
+    }
+  };
 
   return (
     <SafeAreaView style={styles.mainContainer}>
-      {/* 1. Tắt header mặc định của hệ thống để tránh bị lỗi lệch */}
       <Stack.Screen options={{ headerShown: false }} />
 
-      {/* 2. Tự chế thanh Header thủ công: Nút back bên trái, Tiêu đề căn giữa tuyệt đối */}
+      {/* Thanh Header thủ công */}
       <View style={styles.customHeader}>
         <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color="#fff" />
         </TouchableOpacity>
         <Text style={styles.headerTitle} numberOfLines={1}>Điều chỉnh thông báo tổng quát</Text>
-        <View style={{ width: 24 }} /> {/* Khoảng trống cân bằng với nút back */}
+        <View style={{ width: 24 }} />
       </View>
 
       <View style={styles.content}>
         <View style={styles.card}>
+          
           {/* Mục 1: Bật thông báo */}
           <View style={styles.row}>
             <View style={{ flex: 1, paddingRight: 10 }}>
@@ -32,7 +72,7 @@ export default function SettingsNotificationScreen() {
             </View>
             <Switch 
               value={isEnabled} 
-              onValueChange={setIsEnabled} 
+              onValueChange={handleToggleEnabled} 
               trackColor={{ false: '#d1d1d6', true: '#ffb74d' }}
               thumbColor={'#fff'}
             />
@@ -40,35 +80,21 @@ export default function SettingsNotificationScreen() {
 
           <View style={styles.divider} />
 
-          {/* Mục 2: Rung */}
-          <View style={styles.row}>
+          {/* Mục 2: Thông báo Popup */}
+          <View style={[styles.row, !isEnabled && styles.disabledRow]}>
             <View style={{ flex: 1, paddingRight: 10 }}>
-              <Text style={styles.label}>Rung</Text>
-              <Text style={styles.subLabel}>Rung điện thoại khi có cảnh báo</Text>
-            </View>
-            <Switch 
-              value={isVibrate} 
-              onValueChange={setIsVibrate} 
-              trackColor={{ false: '#d1d1d6', true: '#ffb74d' }}
-              thumbColor={'#fff'}
-            />
-          </View>
-
-          <View style={styles.divider} />
-
-          {/* Mục 3: Thông báo Popup */}
-          <View style={styles.row}>
-            <View style={{ flex: 1, paddingRight: 10 }}>
-              <Text style={styles.label}>Thông báo Popup</Text>
-              <Text style={styles.subLabel}>Hiển thị cửa sổ nổi cảnh báo ngay trên màn hình</Text>
+              <Text style={[styles.label, !isEnabled && styles.disabledText]}>Thông báo Popup</Text>
+              <Text style={[styles.subLabel, !isEnabled && styles.disabledText]}>Hiển thị cửa sổ nổi cảnh báo ngay trên màn hình</Text>
             </View>
             <Switch 
               value={isPopup} 
-              onValueChange={setIsPopup} 
+              onValueChange={handleTogglePopup} 
+              disabled={!isEnabled}
               trackColor={{ false: '#d1d1d6', true: '#ffb74d' }}
               thumbColor={'#fff'}
             />
           </View>
+
         </View>
       </View>
     </SafeAreaView>
@@ -77,7 +103,6 @@ export default function SettingsNotificationScreen() {
 
 const styles = StyleSheet.create({
   mainContainer: { flex: 1, backgroundColor: '#f4f5f7' },
-  // Thanh header tự chế bám sát đỉnh, chuẩn màu xanh, có nút back và chữ căn giữa tuyệt đối
   customHeader: { 
     backgroundColor: '#21335b', 
     paddingTop: 45, 
@@ -113,6 +138,9 @@ const styles = StyleSheet.create({
     paddingVertical: 18, 
     paddingHorizontal: 20 
   },
+  disabledRow: {
+    opacity: 0.4,
+  },
   label: { 
     fontSize: 16, 
     fontWeight: 'bold', 
@@ -122,6 +150,9 @@ const styles = StyleSheet.create({
     fontSize: 13, 
     color: '#666', 
     marginTop: 4 
+  },
+  disabledText: {
+    color: '#999',
   },
   divider: { 
     height: 1, 

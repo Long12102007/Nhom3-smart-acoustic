@@ -59,21 +59,25 @@ export default function SettingsScreen() {
       {/* 1. Tắt header mặc định */}
       <Stack.Screen options={{ headerShown: false }} />
 
-      {/* 2. Tự chế thanh Header màu xanh, chữ căn giữa tuyệt đối */}
+      {/* 2. Thanh Header đồng bộ chuẩn với các trang khác */}
       <View style={styles.customHeader}>
         <Text style={styles.headerTitle}>Cài đặt thiết bị</Text>
       </View>
 
-      <ScrollView style={styles.container}>
+      <ScrollView style={styles.container} showsVerticalScrollIndicator={false}>
         <Text style={styles.sectionTitle}>TÀI KHOẢN</Text>
         <View style={styles.group}>
-          <TouchableOpacity style={styles.item} onPress={() => setNameModalVisible(true)}>
-            <Ionicons name="person-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => setNameModalVisible(true)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="person-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Đổi tên đăng nhập</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={() => setPassModalVisible(true)}>
-            <Ionicons name="lock-closed-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => setPassModalVisible(true)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="lock-closed-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Đổi mật khẩu</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
@@ -81,13 +85,17 @@ export default function SettingsScreen() {
 
         <Text style={styles.sectionTitle}>THÔNG BÁO CHUNG</Text>
         <View style={styles.group}>
-          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-notification' as any)}>
-            <Ionicons name="notifications-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-notification' as any)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="notifications-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Điều chỉnh thông báo tổng quát</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-ringtone' as any)}>
-            <Ionicons name="musical-notes-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-ringtone' as any)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="musical-notes-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Nhạc chuông báo động</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
@@ -95,19 +103,23 @@ export default function SettingsScreen() {
 
         <Text style={styles.sectionTitle}>TRỢ GIÚP</Text>
         <View style={styles.group}>
-          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-guide' as any)}>
-            <Ionicons name="book-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-guide' as any)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="book-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Tài liệu hướng dẫn</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-feedback' as any)}>
-            <Ionicons name="headset-outline" size={22} color="#21335b" />
+          <TouchableOpacity style={styles.item} onPress={() => router.push('/settings-feedback' as any)} activeOpacity={0.7}>
+            <View style={styles.iconBox}>
+              <Ionicons name="headset-outline" size={20} color="#21335b" />
+            </View>
             <Text style={styles.itemText}>Liên hệ hỗ trợ & Feedback</Text>
             <Ionicons name="chevron-forward" size={18} color="#888" />
           </TouchableOpacity>
         </View>
 
-        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout}>
+        <TouchableOpacity style={styles.logoutBtn} onPress={handleLogout} activeOpacity={0.8}>
           <Text style={styles.logoutText}>ĐĂNG XUẤT</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -166,10 +178,10 @@ export default function SettingsScreen() {
 
 const styles = StyleSheet.create({
   mainContainer: { flex: 1, backgroundColor: '#f4f5f7' },
-  // Thanh header tự chế bám sát đỉnh màn hình, căn giữa tuyệt đối
+  // Thanh header đồng bộ chuẩn khoảng cách vùng trắng phía trên
   customHeader: { 
     backgroundColor: '#21335b', 
-    paddingTop: 50, // Tránh tai thỏ / camera trước
+    paddingTop: 55, 
     paddingBottom: 16, 
     alignItems: 'center', 
     justifyContent: 'center',
@@ -182,11 +194,29 @@ const styles = StyleSheet.create({
     textAlign: 'center'
   },
   container: { flex: 1, padding: 16 },
-  sectionTitle: { fontSize: 13, fontWeight: 'bold', color: '#888', marginBottom: 8, marginTop: 16 },
-  group: { backgroundColor: '#fff', borderRadius: 16, marginBottom: 10, overflow: 'hidden', elevation: 1 },
-  item: { flexDirection: 'row', alignItems: 'center', padding: 18, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
+  sectionTitle: { fontSize: 13, fontWeight: 'bold', color: '#888', marginBottom: 8, marginTop: 12, marginLeft: 4 },
+  group: { 
+    backgroundColor: '#fff', 
+    borderRadius: 16, 
+    marginBottom: 10, 
+    overflow: 'hidden', 
+    elevation: 2,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 2,
+  },
+  item: { flexDirection: 'row', alignItems: 'center', paddingVertical: 16, paddingHorizontal: 16, borderBottomWidth: 1, borderBottomColor: '#f0f0f0' },
+  iconBox: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: '#f4f5f7',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   itemText: { flex: 1, fontSize: 15, color: '#333', marginLeft: 14, fontWeight: '500' },
-  logoutBtn: { backgroundColor: '#d32f2f', borderRadius: 12, height: 52, justifyContent: 'center', alignItems: 'center', marginVertical: 24, elevation: 2 },
+  logoutBtn: { backgroundColor: '#e53935', borderRadius: 16, height: 50, justifyContent: 'center', alignItems: 'center', marginVertical: 24, elevation: 2 },
   logoutText: { color: '#fff', fontSize: 16, fontWeight: 'bold', letterSpacing: 1 },
 
   // Modal styles
