@@ -219,11 +219,11 @@ The actual evaluation results and performance metrics should be documented in th
 
 | Resource | Link |
 |---|---|
-| GitHub Repository | [Project Source Code](https://github.com/Long12102007/smart-acoustic) |
-| YouTube Demonstration | [Project Demo](https://youtu.be/JIVJfMNz6M0) |
-| Project Timeline | [Timeline Document](docs/Bang_tien_do.xlsx) |
-| Team Task Assignment | [Task Assignment Document](docs/Bang_phan_cong_nv.xlsx) |
-| PowerPoint Presentation | [Presentation Slides](presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx) |
+| GitHub Repository | [(https://github.com/Long12102007/smart-acoustic) |
+| YouTube Demonstration | (https://youtu.be/JIVJfMNz6M0) |
+| Project Timeline | (docs/Bang_tien_do.xlsx) |
+| Team Task Assignment | (docs/Bang_phan_cong_nv.xlsx) |
+| PowerPoint Presentation | (presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx) |
 
 ---
 
