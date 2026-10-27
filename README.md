@@ -121,7 +121,7 @@ The team task assignment document describes the distribution of responsibilities
 
 It helps track individual contributions and coordinate the hardware, AI model, mobile application, documentation, and testing activities.
 
-**Team Task Assignment:** [View Team Task Assignment](docs/Bang_phan_nv.xlsx)
+**Team Task Assignment:** (docs/Bang_phan_nv.xlsx)
 
 ---
 
@@ -149,7 +149,7 @@ The PowerPoint presentation summarizes the project's objectives, technologies, s
 
 It is intended to support the final project presentation and provide a concise overview of the work completed by the team.
 
-**Presentation Slides:** [View Project Presentation](presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx)
+**Presentation Slides:** (presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx)
 
 ---
 
