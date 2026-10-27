@@ -1,4 +1,4 @@
-# Smart Acoustic Baby Cry
+# Smart Acoustic Baby Cry - Nhom 3
 ### Intelligent Baby Cry Detection and Monitoring System
 
 An intelligent baby-cry detection system that integrates embedded hardware, audio classification, and a mobile application to support baby monitoring.
@@ -241,7 +241,7 @@ The GitHub repository serves as the central location for the source code, techni
 
 **Project Name:** Smart Acoustic Baby Cry
 
-**Team:** Group 3
+**Team:** Group 3 : Lê Đỗ Minh Chiến, Huỳnh Ngọc Bảo Long
 
 **Project Type:** Embedded Systems, Audio Processing, Machine Learning, and Mobile Application Development
 
