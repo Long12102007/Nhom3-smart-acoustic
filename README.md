@@ -113,7 +113,7 @@ The project timeline summarizes the planned activities, milestones, and overall 
 
 It provides an overview of the project's development from the initial planning stage to the final implementation and testing stages.
 
-**Project Timeline:** [View Project Timeline](docs/Bang_tien_do.xlsx)
+**Project Timeline:** [[View Project Timeline](docs/Bang_tien_do.xlsx)](https://docs.google.com/spreadsheets/d/1kP9JVAiK_WzFUSlu3VnuZOg3w0rbTsxO/edit?gid=402387531#gid=402387531)
 
 ### 5.3 Team Task Assignment
 
@@ -121,7 +121,7 @@ The team task assignment document describes the distribution of responsibilities
 
 It helps track individual contributions and coordinate the hardware, AI model, mobile application, documentation, and testing activities.
 
-**Team Task Assignment:** (docs/Bang_phan_nv.xlsx)
+**Team Task Assignment:** [(docs/Bang_phan_nv.xlsx)](https://docs.google.com/spreadsheets/d/1qQWCua74gzCp8dxZ-vZoD6xFgJCn_SCl/edit?gid=727585442#gid=727585442)
 
 ---
 
@@ -149,7 +149,7 @@ The PowerPoint presentation summarizes the project's objectives, technologies, s
 
 It is intended to support the final project presentation and provide a concise overview of the work completed by the team.
 
-**Presentation Slides:** (presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx)
+**Presentation Slides:** [(presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx)](https://docs.google.com/presentation/d/1z4oR5CtuTfwQapvTDruGNIkLE4UZ7Dfy/edit?slide=id.p1#slide=id.p1)
 
 ---
 
@@ -221,9 +221,9 @@ The actual evaluation results and performance metrics should be documented in th
 |---|---|
 | GitHub Repository | [(https://github.com/Long12102007/smart-acoustic) |
 | YouTube Demonstration | (https://youtu.be/JIVJfMNz6M0) |
-| Project Timeline | (docs/Bang_tien_do.xlsx) |
-| Team Task Assignment | (docs/Bang_phan_cong_nv.xlsx) |
-| PowerPoint Presentation | (presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx) |
+| Project Timeline | [(docs/Bang_tien_do.xlsx)](https://docs.google.com/spreadsheets/d/1kP9JVAiK_WzFUSlu3VnuZOg3w0rbTsxO/edit?gid=402387531#gid=402387531) |
+| Team Task Assignment | [(docs/Bang_phan_cong_nv.xlsx)](https://docs.google.com/spreadsheets/d/1qQWCua74gzCp8dxZ-vZoD6xFgJCn_SCl/edit?gid=727585442#gid=727585442) |
+| PowerPoint Presentation | [(presentation/Trợ_ý_Giám_sát_Trẻ_em_bằng_âm_thanh.pptx)](https://docs.google.com/presentation/d/1z4oR5CtuTfwQapvTDruGNIkLE4UZ7Dfy/edit?slide=id.p1#slide=id.p1) |
 
 ---
 
