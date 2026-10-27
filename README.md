@@ -113,7 +113,8 @@ The project timeline summarizes the planned activities, milestones, and overall 
 
 It provides an overview of the project's development from the initial planning stage to the final implementation and testing stages.
 
-**Project Timeline:** [(docs/Bang_tien_do.xlsx)]](https://docs.google.com/spreadsheets/d/1kP9JVAiK_WzFUSlu3VnuZOg3w0rbTsxO/edit?gid=402387531#gid=402387531)
+**Project Timeline:** [(docs/Bang_tien_do.xlsx)](https://docs.google.com/spreadsheets/d/1kP9JVAiK_WzFUSlu3VnuZOg3w0rbTsxO/edit?gid=402387531#gid=402387531)
+
 ### 5.3 Team Task Assignment
 
 The team task assignment document describes the distribution of responsibilities among team members.
